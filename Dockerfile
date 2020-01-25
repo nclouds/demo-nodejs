@@ -14,7 +14,8 @@ COPY package*.json ./
 RUN rm -rf /var/cache/apk
 RUN mkdir /var/cache/apk
 
-RUN ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+RUN cat /etc/resolv.conf
+RUN systemctl restart docker
 
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
