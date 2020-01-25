@@ -11,11 +11,11 @@ ENV NODE_ENV ${NODE}
 WORKDIR /usr/src/app
 COPY package*.json ./
 
-RUN apk update \
- && apk add --no-cache
-
 RUN rm -rf /var/cache/apk
 RUN mkdir /var/cache/apk
+
+RUN apk update \
+ && apk add --no-cache
 
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
