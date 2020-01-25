@@ -11,6 +11,7 @@ ENV NODE_ENV ${NODE}
 WORKDIR /usr/src/app
 COPY package*.json ./
 
+RUN http://alpine.mirror.far.fi/v3.5/main/x86_64/
 RUN echo http://alpine.mirror.far.fi/v3.5/main/ > /etc/apk/repositories; \
     echo http://alpine.mirror.far.fi/v3.5/community/ >> /etc/apk/repositories
 
