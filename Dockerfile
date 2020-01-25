@@ -16,9 +16,12 @@ RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.5/main > /etc/apk/repositorie
 RUN apk update \
  && apk add --no-cache
 
-RUN apk -U add curl jq bash nodejs nodejs-npm --quiet
-RUN npm install && apk del --purge nodejs-npm
-RUN m -rvf /var/cache/* /root/.npm /tmp/*
+RUN rm -rf /var/cache/apk
+RUN mkdir /var/cache/apk
+
+RUN apk -U add curl jq bash nodejs nodejs-npm && \
+  npm install && apk del --purge nodejs-npm && \
+  rm -rvf /var/cache/* /root/.npm /tmp/*
 
 # copy the code
 COPY . .
