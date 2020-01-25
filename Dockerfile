@@ -1,12 +1,9 @@
 # FROM node:alpine
 FROM alpine:3.6
 
-RUN \
-    # DNS problem workaround
-    # https://github.com/gliderlabs/docker-alpine/issues/386
-    printf "nameserver 8.8.8.8\nnameserver 9.9.9.9\nnameserver 1.1.1.1" > /etc/resolve.conf \
-    \
-    && apk add --no-cache bash
+RUN printf "nameserver 8.8.8.8\nnameserver 9.9.9.9\nnameserver 1.1.1.1" > /etc/resolve.conf
+RUN cat /etc/resolve.conf
+RUN apk add --no-cache bash
 # set the default NODE_ENV to production
 # for dev/test build with: docker build --build-arg NODE=development .
 # and the testing npms will be included
