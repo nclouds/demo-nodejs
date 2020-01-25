@@ -14,7 +14,7 @@ RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.5/main > /etc/apk/repositorie
     echo http://mirror.yandex.ru/mirrors/alpine/v3.5/community >> /etc/apk/repositories
 
 RUN apk update \
- && apk add --no-cache \
+ && apk add --no-cache
 
 RUN apk -U add curl jq bash nodejs nodejs-npm --quiet
 RUN npm install && apk del --purge nodejs-npm
