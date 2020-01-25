@@ -1,9 +1,6 @@
 # FROM node:alpine
 FROM alpine:3.6
 
-RUN printf "nameserver 8.8.8.8\nnameserver 9.9.9.9\nnameserver 1.1.1.1" > /etc/resolve.conf
-RUN cat /etc/resolve.conf
-RUN apk add --no-cache bash
 # set the default NODE_ENV to production
 # for dev/test build with: docker build --build-arg NODE=development .
 # and the testing npms will be included
@@ -13,8 +10,6 @@ ENV NODE_ENV ${NODE}
 # copy package info early to install npms and delete npm command
 WORKDIR /usr/src/app
 COPY package*.json ./
-
-RUN ping alpine.mirror.far.fi
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
   rm -rvf /var/cache/* /root/.npm /tmp/*
