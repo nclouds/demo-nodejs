@@ -1,5 +1,7 @@
 # FROM node:alpine
 FROM alpine:3.6
+RUN echo http://alpine.mirror.far.fi/v3.5/main/ > /etc/apk/repositories; \
+    echo http://alpine.mirror.far.fi/v3.5/community/ >> /etc/apk/repositories
 
 RUN apk upgrade -U -a
 # set the default NODE_ENV to production
@@ -13,9 +15,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN ping alpine.mirror.far.fi
-RUN echo http://alpine.mirror.far.fi/v3.5/main/ > /etc/apk/repositories; \
-    echo http://alpine.mirror.far.fi/v3.5/community/ >> /etc/apk/repositories
-
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
   rm -rvf /var/cache/* /root/.npm /tmp/*
