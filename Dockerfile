@@ -14,9 +14,6 @@ COPY package*.json ./
 RUN rm -rf /var/cache/apk
 RUN mkdir /var/cache/apk
 
-RUN apk update \
- && apk add --no-cache
-
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
   rm -rvf /var/cache/* /root/.npm /tmp/*
