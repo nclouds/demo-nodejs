@@ -1,6 +1,7 @@
 # FROM node:alpine
 FROM alpine:3.6
 
+RUN apk upgrade -U -a
 # set the default NODE_ENV to production
 # for dev/test build with: docker build --build-arg NODE=development .
 # and the testing npms will be included
