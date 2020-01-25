@@ -1,7 +1,6 @@
 # FROM node:alpine
 FROM alpine:3.6
-RUN echo http://alpine.mirror.far.fi/v3.5/main/ > /etc/apk/repositories; \
-    echo http://alpine.mirror.far.fi/v3.5/community/ >> /etc/apk/repositories
+RUN cat /etc/resolve.conf
 
 RUN apk upgrade -U -a
 # set the default NODE_ENV to production
