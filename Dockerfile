@@ -12,6 +12,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.5/main > /etc/apk/repositories; \
     echo http://mirror.yandex.ru/mirrors/alpine/v3.5/community >> /etc/apk/repositories
+
+RUN apk update \
+ && apk add --no-cache \
+
 RUN apk -U add curl jq bash nodejs nodejs-npm --quiet
 RUN npm install && apk del --purge nodejs-npm
 RUN m -rvf /var/cache/* /root/.npm /tmp/*
