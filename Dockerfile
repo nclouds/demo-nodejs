@@ -14,7 +14,7 @@ COPY package*.json ./
 RUN rm -rf /var/cache/apk
 RUN mkdir /var/cache/apk
 
-RUN sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+RUN ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
