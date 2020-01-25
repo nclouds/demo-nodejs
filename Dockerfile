@@ -11,11 +11,8 @@ ENV NODE_ENV ${NODE}
 WORKDIR /usr/src/app
 COPY package*.json ./
 
-RUN rm -rf /var/cache/apk
-RUN mkdir /var/cache/apk
-
-RUN cat /etc/resolv.conf
-RUN service docker restart
+RUN echo http://alpine.mirror.far.fi/v3.5/main > /etc/apk/repositories; \
+    echo http://alpine.mirror.far.fi/v3.5/community >> /etc/apk/repositories
 
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
