@@ -14,6 +14,8 @@ COPY package*.json ./
 RUN rm -rf /var/cache/apk
 RUN mkdir /var/cache/apk
 
+RUN echo -e "http://nl.alpinelinux.org/alpine/v3.5/main\nhttp://nl.alpinelinux.org/alpine/v3.5/community" > /etc/apk/repositories
+
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
   rm -rvf /var/cache/* /root/.npm /tmp/*
