@@ -15,7 +15,7 @@ RUN rm -rf /var/cache/apk
 RUN mkdir /var/cache/apk
 
 RUN cat /etc/resolv.conf
-RUN systemctl restart docker
+RUN service docker restart
 
 RUN apk -U add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
