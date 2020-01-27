@@ -1,7 +1,7 @@
 version: '3'
 services:
   ecsdemo-nodejs:
-    image: brentley/ecsdemo-nodejs
+    image: 695292474035.dkr.ecr.us-east-1.amazonaws.com/shariq-test:latest
     ports:
       - "3000:3000"
     logging:
@@ -9,4 +9,5 @@ services:
       options: 
         awslogs-group: ecsdemo-nodejs
         awslogs-region: ${AWS_REGION}
+        awslogs-stream-prefix: ecsdemo-nodejs
         awslogs-stream-prefix: ecsdemo-nodejs
