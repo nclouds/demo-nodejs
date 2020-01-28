@@ -30,7 +30,7 @@ node{
     echo "Deployment ..."
     container('docker') {
         script {
-            sh "aws eks update-kubeconfig --name nclouds-eks-nodejs --region us-east-1"
+            sh "aws eks update-kubeconfig --name nclouds-eks-dev --region us-east-1"
             sh "kubectl set image deployment/ecsdemo-nodejs ecsdemo-nodejs=695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:${commit} --record"
         }
     }
@@ -57,7 +57,7 @@ node{
                 script {
                     sh "echo deploying to prod..."
                     // sh "aws eks update-kubeconfig --name nclouds-eks-prod --region us-east-1"
-                    // sh "kubectl set image deployment/ecsdemo-nodejs ecsdemo-nodejs=695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:${commit} --record"
+                    // sh "kubectl set image deployment/ecsdemo-nodejs ecsdemo-nodejs=695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:${commit} --record"
                 }
             }
         }
