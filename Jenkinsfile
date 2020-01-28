@@ -10,12 +10,12 @@ node{
           script {
             sh 'docker --version'
             //sh 'helm version'
-            sh "docker build -t eks-demo-nodejs --network=host ."
+            sh "docker build -t nclouds-eks-nodejs --network=host ."
             sh "\$(aws ecr get-login --no-include-email --region us-east-1)"
-            sh "docker tag eks-demo-nodejs 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:${commit}"
-            sh "docker tag eks-demo-nodejs 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:latest"
-            sh "docker push 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:${commit}"
-            sh "docker push 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:latest"
+            sh "docker tag nclouds-eks-nodejs 695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:${commit}"
+            sh "docker tag nclouds-eks-nodejs 695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:latest"
+            sh "docker push 695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:${commit}"
+            sh "docker push 695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:latest"
 
           }
       }
@@ -30,8 +30,8 @@ node{
     echo "Deployment ..."
     container('docker') {
         script {
-            sh "aws eks update-kubeconfig --name nclouds-eks-dev --region us-east-1"
-            sh "kubectl set image deployment/ecsdemo-nodejs ecsdemo-nodejs=695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:${commit} --record"
+            sh "aws eks update-kubeconfig --name nclouds-eks-nodejs --region us-east-1"
+            sh "kubectl set image deployment/ecsdemo-nodejs ecsdemo-nodejs=695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:${commit} --record"
         }
     }
   }

@@ -21,7 +21,7 @@ spec:
         app: ecsdemo-nodejs
     spec:
       containers:
-      - image: 695292474035.dkr.ecr.us-east-1.amazonaws.com/shariq-test:latest
+      - image: 695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs:latest
         imagePullPolicy: Always
         name: ecsdemo-nodejs
         ports:
