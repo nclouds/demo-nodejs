@@ -12,8 +12,8 @@ node{
             //sh 'helm version'
             sh "docker build -t eks-demo-nodejs --network=host ."
             sh "\$(aws ecr get-login --no-include-email --region us-east-1)"
-            sh "docker tag shariq-test 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:${commit}"
-            sh "docker tag shariq-test 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:latest"
+            sh "docker tag eks-demo-nodejs 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:${commit}"
+            sh "docker tag eks-demo-nodejs 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:latest"
             sh "docker push 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:${commit}"
             sh "docker push 695292474035.dkr.ecr.us-east-1.amazonaws.com/eks-demo-nodejs:latest"
 
