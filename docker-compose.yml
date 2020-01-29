@@ -10,4 +10,3 @@ services:
         awslogs-group: ecsdemo-nodejs
         awslogs-region: ${AWS_REGION}
         awslogs-stream-prefix: ecsdemo-nodejs
-        awslogs-stream-prefix: ecsdemo-nodejs
