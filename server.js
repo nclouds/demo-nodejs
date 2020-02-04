@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
   res.set({
   'Content-Type': 'text/plain'
 })
-  res.send(`Node.js backend: Hello! from ${message} commit 1`);
+  res.send(`Node.js backend: Hello! from ${message} commit 2`);
   // res.send(`Hello World! from ${ipaddress} in AZ-${az} which has been up for ` + process.uptime() + 'ms');
 });
 
