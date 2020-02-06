@@ -8,7 +8,7 @@ pipeline {
             string(name: 'ECR_REPO', defaultValue: '695292474035.dkr.ecr.us-east-1.amazonaws.com/nclouds-eks-nodejs', description: 'Full ECR repo base image uri')
             string(name: 'ECR_REPO_NAME', defaultValue: 'nclouds-eks-nodejs', description: 'ECR repo name')
             string(name: 'DEPLOYMENT_NAME', defaultValue: 'ecsdemo', description: 'Deployment name in Kubernetes Deployment File')
-            choice(name: 'OPTION', defaultValue: 'prod-deploy', choices: ['build', 'test', 'dev-deploy', 'prod-deploy'])
+            choice(name: 'OPTION', choices: ['build', 'test', 'dev-deploy', 'prod-deploy'])
     }
 
     sharedPipeline(
