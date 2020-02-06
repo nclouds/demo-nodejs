@@ -1,6 +1,4 @@
 @Library('shared-library')_
-pipeline {
-    agent any
     parameters {
             string(name: 'EKS_PROD_CLUSTER', defaultValue: 'nclouds-eks-prod', description: 'The name of the eks prod cluster')
             string(name: 'EKS_DEV_CLUSTER', defaultValue: 'nclouds-eks-dev', description: 'The name of the eks dev cluster')
@@ -20,4 +18,3 @@ pipeline {
         DEPLOYMENT_NAME: 'ecsdemo-nodejs',
         OPTION: 'prod-deploy'
     )
-}
