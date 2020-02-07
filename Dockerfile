@@ -10,7 +10,9 @@ ENV NODE_ENV ${NODE}
 # copy package info early to install npms and delete npm command
 WORKDIR /usr/src/app
 COPY package*.json ./
-RUN apk -U add curl jq bash nodejs nodejs-npm && \
+
+# hadolint ignore=DL3018
+RUN apk --no-cache add curl jq bash nodejs nodejs-npm && \
   npm install && apk del --purge nodejs-npm && \
   rm -rvf /var/cache/* /root/.npm /tmp/*
 
